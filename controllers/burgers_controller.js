@@ -32,8 +32,8 @@ router.post('/api/burgers', async function (req, res) {
     const createdBurger = await burgerToBeCreated.save();
     res.status(201).json({ data: createdBurger });
   } catch (error) {
-    console.log(err);
-    res.status(500).json(err);
+    console.log(error);
+    res.status(500).json(error);
   }
 });
 

@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="row  mt-5">
-        <div class="col align-self-start">
+        <div id="allAvailableBurgers" class="col align-self-start">
             {{!-- show all un-devoured burgers here --}}
             {{#each burgers}}
             {{#unless devoured}}
@@ -14,7 +14,7 @@
                     <span class="availableBurger">{{burger_name}}</span>
                 </div>
                 <div class="col-5">
-                    <button style="display: inline;" id="{{id}}">Devour it!</button>
+                    <button class="devourBtn" style="display: inline;" id="{{id}}">Devour it!</button>
                 </div>
             </div>
             {{/unless}}
