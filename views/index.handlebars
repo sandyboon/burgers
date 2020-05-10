@@ -14,7 +14,8 @@
                     <span class="availableBurger">{{burger_name}}</span>
                 </div>
                 <div class="col-5">
-                    <button class="devourBtn" style="display: inline;" id="{{id}}">Devour it!</button>
+                    <button data-burger-name="{{burger_name}}" class="devourBtn" style="display: inline;"
+                        id="{{id}}">Devour it!</button>
                 </div>
             </div>
             {{/unless}}
@@ -39,6 +40,7 @@
             <div class="row">
                 <div class="col-8 offset-2">
                     <input class="burgerBox" type="text" name="tobeadded" id="tobeadded">
+                    <span style="color: red;" class="hideError">* Required field</span>
                 </div>
             </div>
             <div class="row mt-2">
