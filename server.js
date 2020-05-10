@@ -1,4 +1,5 @@
 const express = require('express');
+const exphbs = require('express-handlebars');
 const apiRouter = require('./controllers/burgers_controller');
 
 //create the app
@@ -11,7 +12,11 @@ app.use(express.json());
 //serve up static content
 app.use(express.static('public'));
 
-app.use('/app', apiRouter);
+// set up template engine
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
+app.use('/', apiRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

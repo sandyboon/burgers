@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4 offset-4 banner mr-auto">
+            <img src="/assets/img/burger.png" alt="burgerImage" class="bannerImg">
+        </div>
+    </div>
+    <div class="row  mt-5">
+        <div class="col align-self-start">
+            {{!-- show all un-devoured burgers here --}}
+            {{#each burgers}}
+            {{#unless devoured}}
+            <div class="row mt-2">
+                <div class="col-6">
+                    <span class="availableBurger">{{burger_name}}</span>
+                </div>
+                <div class="col-5">
+                    <button style="display: inline;" id="{{id}}">Devour it!</button>
+                </div>
+            </div>
+            {{/unless}}
+            {{/each}}
+        </div>
+        <div class="col ">
+            {{#each burgers}}
+            {{#if devoured}}
+            <div class="row">
+                <div class="col-6 offset-3">
+                    <span class="dvouredBurger">
+                        <s>{{burger_name}}</s>
+                    </span>
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-6 offset-3">
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <input class="burgerBox" type="text" name="tobeadded" id="tobeadded">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-8 offset-2">
+                    <div class="row">
+                        <div class="col-8 offset-2">
+                            <button class="btn btn-primary" id="addBurger">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

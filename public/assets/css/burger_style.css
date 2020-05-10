@@ -1,3 +1,33 @@
 body {
-  background-color: rgb(255, 202, 99);
+  background-color: rgb(255, 202, 99) !important;
+}
+
+/**
+banner class
+**/
+.banner {
+  height: 100px;
+}
+
+/*banne img*/
+.bannerImg {
+  height: 100px;
+}
+
+/*Style for burgers on the left which are available*/
+.availableBurger {
+  font-size: medium;
+  color: green;
+  font-weight: bolder;
+}
+
+/*Style for burgers on the right which are available*/
+.dvouredBurger {
+  font-size: medium;
+  color: red;
+  font-weight: bolder;
+}
+
+.burgerBox {
+  height: 50px;
 }

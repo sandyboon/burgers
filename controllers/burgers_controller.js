@@ -1,11 +1,21 @@
 const express = require('express');
 const Burger = require('../models/burger');
 
-//create an api router
+//create a router
 const router = express.Router();
 
+//html routes
+router.get('/index', async function (req, res) {
+  try {
+    const allBurgers = await Burger.getAllBurgers();
+    res.render('index', { burgers: allBurgers });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 //Get all burgers at root
-router.get('/burgers', async function (req, res) {
+router.get('/api/burgers', async function (req, res) {
   try {
     const allBurgers = await Burger.getAllBurgers();
     res.status(200).json({ data: allBurgers });
@@ -16,7 +26,7 @@ router.get('/burgers', async function (req, res) {
 });
 
 //creat a new burger
-router.post('/burgers', async function (req, res) {
+router.post('/api/burgers', async function (req, res) {
   try {
     const burgerToBeCreated = new Burger(req.body);
     const createdBurger = await burgerToBeCreated.save();
@@ -28,7 +38,7 @@ router.post('/burgers', async function (req, res) {
 });
 
 //update a burger
-router.put('/burgers', async function (req, res) {
+router.put('/api/burgers', async function (req, res) {
   try {
     const burgerToBeUpdated = new Burger(req.body);
     const savedBurger = await burgerToBeUpdated.save();
