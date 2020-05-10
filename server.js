@@ -12,3 +12,9 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use('/app', apiRouter);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  // Log (server-side) when our server has started
+  console.log(`Server listening on: http://localhost:${PORT}`);
+});

@@ -10,6 +10,7 @@ router.get('/burgers', async function (req, res) {
     const allBurgers = await Burger.getAllBurgers();
     res.status(200).json({ data: allBurgers });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -18,9 +19,24 @@ router.get('/burgers', async function (req, res) {
 router.post('/burgers', async function (req, res) {
   try {
     const burgerToBeCreated = new Burger(req.body);
-    const createdBurger = burgerToBeCreated.save();
+    const createdBurger = await burgerToBeCreated.save();
     res.status(201).json({ data: createdBurger });
-  } catch (error) {}
+  } catch (error) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+//update a burger
+router.put('/burgers', async function (req, res) {
+  try {
+    const burgerToBeUpdated = new Burger(req.body);
+    const savedBurger = await burgerToBeUpdated.save();
+    res.status(200).json({ data: savedBurger });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
 });
 
 module.exports = router;

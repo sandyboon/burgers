@@ -1,20 +1,33 @@
 const mysql = require('mysql2/promise');
 
-let connection = null;
-
 const dbConfig = {
   host: 'localhost',
   port: 3306,
   user: 'root',
+  database: 'burgers_db',
   password: 'password',
 };
 
-mysql
-  .createConnection(dbConfig)
-  .then((conn) => {
-    connection = conn;
-    console.log('Connected to database with connection id :' + conn.threadId);
-  })
-  .catch((err) => console.log(err));
+let connection = null;
 
-module.exports;
+const getConnection = async function () {
+  if (connection !== null) {
+    return connection;
+  } else {
+    connection = await mysql.createConnection(dbConfig);
+    console.log(
+      'connected to database with conenction id :' + connection.threadId
+    );
+    return connection;
+  }
+};
+
+// mysql
+//   .createConnection(dbConfig)
+//   .then((conn) => {
+//     connection = conn;
+//     console.log('Connected to database with connection id :' + conn.threadId);
+//   })
+//   .catch((err) => console.log(err));
+
+module.exports = getConnection;
