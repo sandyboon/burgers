@@ -1,28 +1,28 @@
 const orm = require('../config/orm');
 
 class Burger {
-  constructor({name, devoured}) {
+  constructor({ name, devoured }) {
     this.burger_name = name;
     this.devoured = devoured;
   }
 
   async save() {
-      if(this.id){
-          //need to call update this burger already exists
-          return await this.update()
-      }
-      else{
-          //call insert
-      }
-    return await orm.insertOne(this);
+    if (this.id) {
+      //need to call update this burger already exists
+      return await this.update();
+    } else {
+      //call insert
+      this.id = await orm.insertOne(this);
+    }
+    return this;
   }
 
   async update() {
     return await orm.updateOne(this);
   }
 
-  async static getAllBurgers(){
-     return  await orm.selectAll()
+  static async getAllBurgers() {
+    return await orm.selectAll();
   }
 }
 
