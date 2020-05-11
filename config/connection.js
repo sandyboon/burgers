@@ -14,7 +14,12 @@ const getConnection = async function () {
   if (connection !== null) {
     return connection;
   } else {
-    connection = await mysql.createConnection(dbConfig);
+    if (process.env.JAWSDB_URL) {
+      connection = await mysql.createConnection(process.env.JAWSDB_URL);
+    } else {
+      connection = await mysql.createConnection(dbConfig);
+    }
+
     console.log(
       'connected to database with conenction id :' + connection.threadId
     );
