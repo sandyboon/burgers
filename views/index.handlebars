@@ -1,15 +1,15 @@
-<div class="container">
-    <div class="row">
-        <div class="col-4 offset-4 banner mr-auto">
+<div class="container-fluid">
+    <div class="row banner">
+        <div class="col-4 offset-4 mr-auto">
             <img src="/assets/img/burger.png" alt="burgerImage" class="bannerImg">
         </div>
     </div>
-    <div class="row  mt-5">
+    <div class="row ml-3 mt-5">
         <div id="allAvailableBurgers" class="col align-self-start">
             {{!-- show all un-devoured burgers here --}}
             {{#each burgers}}
             {{#unless devoured}}
-            <div class="row mt-2">
+            <div class="row mt-2 burgerRow">
                 <div class="col-6">
                     <span class="availableBurger">{{burger_name}}</span>
                 </div>
@@ -21,7 +21,7 @@
             {{/unless}}
             {{/each}}
         </div>
-        <div class="col ">
+        <div id="devouredBurgers" class="col ">
             {{#each burgers}}
             {{#if devoured}}
             <div class="row">
@@ -35,7 +35,7 @@
             {{/each}}
         </div>
     </div>
-    <div class="row mt-5">
+    <div class="row mt-5 mr-3">
         <div class="col-6 offset-3">
             <div class="row">
                 <div class="col-8 offset-2">

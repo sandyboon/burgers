@@ -7,6 +7,7 @@ banner class
 **/
 .banner {
   height: 100px;
+  background-color: seagreen;
 }
 
 /*banne img*/
